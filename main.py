@@ -37,7 +37,7 @@ def bfs(problema):
 
     return visitados.tamanho(), None
 
-#Depth-First Search - Busca em Profundidade
+# Depth-First Search - Busca em Profundidade
 def dfs(problema):
     no = problema.iniciar()
     pilha = Pilha()
@@ -60,7 +60,7 @@ def dfs(problema):
 
 if __name__ == "__main__":
     problema = Labirinto()
-    resultado = bfs(problema)
+    resultado = dfs(problema)
 
     if resultado[1] is not None:
         caminho = no_caminho(resultado[1])

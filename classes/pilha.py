@@ -1,4 +1,4 @@
-class Pilha: #Utilizado em DFS
+class Pilha: # Utilizado em DFS
     def __init__(self):
         self.pilha = []
 
