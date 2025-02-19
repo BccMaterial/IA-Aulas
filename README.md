@@ -1,4 +1,3 @@
-# IA-Aula03
 # Busca Heurística - Prático
 
 Resolver o problema baixo com código baseado no código em:
