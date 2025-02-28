@@ -43,6 +43,13 @@ class Agendamento:
 
     def define_restricoes(self):
         self.problema = SatisfacaoRestricoes(self.variaveis, self.dominios)
+        self.problema.adicionar_restricao(MaxAulasProf(self.variaveis, "a", 4))
+        self.problema.adicionar_restricao(MaxAulasProf(self.variaveis, "b", 4))
+        self.problema.adicionar_restricao(MaxAulasProf(self.variaveis, "c", 4))
+        self.problema.adicionar_restricao(EqAulasMateria(self.variaveis, "mat", 3))
+        self.problema.adicionar_restricao(EqAulasMateria(self.variaveis, "fis", 2))
+        self.problema.adicionar_restricao(EqAulasMateria(self.variaveis, "com", 3))
+
 
     def rodar(self):
         self.define_variaveis()
@@ -55,3 +62,13 @@ class Agendamento:
         else:
             for estado, valor in self.resposta.items():
                 print(f"{estado}: {valor}")
+
+
+    def aulas_materia(variaveis, materia = ""):
+        aulas_materia = []
+        for variavel in variaveis:
+            if variavel is None:
+                continue
+            if variaveis[variavel][1] == materia:
+                aulas_materia.append(variavel)
+        return aulas_materia
