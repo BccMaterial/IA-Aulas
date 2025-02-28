@@ -85,7 +85,6 @@ class MaxAulasProf(Restricao):
         return qtd_aulas_professor
 
     def esta_satisfeita(self, atribuicao):
-
         # if self.professor not in atribuicao:
         #     return True
         return self.aulas_professor(atribuicao) <= self.max_aulas
@@ -102,6 +101,7 @@ class EqAulasMateria(Restricao):
         for variavel in self.variaveis:
             if atribuicao.get(variavel, None) is None:
                 continue
+            # print(f"{variavel} => {atribuicao[variavel]")
             if (atribuicao[variavel])[0] == self.materia:
                 qtd_aulas_materia += 1
         return qtd_aulas_materia
@@ -109,7 +109,7 @@ class EqAulasMateria(Restricao):
     def esta_satisfeita(self, atribuicao):
         # if self.materia not in atribuicao:
         #     return True
-        return self.aulas_materia(atribuicao) == self.qtd_aulas
+        return self.aulas_materia(atribuicao) <= self.qtd_aulas
 
 
 

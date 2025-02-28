@@ -35,14 +35,19 @@ class SatisfacaoRestricoes():
                 return False
         return True
 
-    def busca_backtracking(self, atribuicao = {}):
+    def busca_backtracking(self, atribuicao = {}, qtd_atribuicoes = 0):
         """
         Função recursiva que se comporta como DFS,
         procurando por estados válidos
         """
+
         # Retorna sucesso quando todas as variáveis forem atribuídas
-        if len(atribuicao) == len(self.variaveis):
+        if qtd_atribuicoes == 0:
+            qtd_atribuicoes = len(self.variaveis)
+
+        if len(atribuicao) == qtd_atribuicoes:
             return atribuicao
+
         # Pra cada variável em `self.variaveis`, verifica se não está atribuída 
         # nos parametros
         variaveis_nao_atribuidas = [v for v in self.variaveis if v not in atribuicao]

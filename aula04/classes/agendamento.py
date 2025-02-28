@@ -38,7 +38,8 @@ class Agendamento:
                 ("com", "b"), 
                 ("mat", "b"),
                 ("fis", "c"), 
-                ("com", "c")
+                ("com", "c"),
+                None # Pode ter aulas livres, no caso é "None"
             ]
 
     def define_restricoes(self):
@@ -54,7 +55,7 @@ class Agendamento:
     def rodar(self):
         self.define_variaveis()
         self.define_restricoes()
-        self.resposta = self.problema.busca_backtracking()
+        self.resposta = self.problema.busca_backtracking(qtd_atribuicoes=8)
 
     def imprime_resposta(self):
         if self.resposta is None:
