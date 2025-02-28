@@ -18,9 +18,9 @@ class Restricao():
         """
         return True
 
-##################
-### RESTRIÇÕES ###
-##################
+########################
+### RESTRIÇÕES - ZOO ###
+########################
 
 class SeGostam(Restricao):
     def __init__(self, animal1, animal2):
@@ -65,3 +65,29 @@ class Adjacente(Restricao):
             return True
         return abs(atribuicao[self.animal1] - atribuicao[self.animal2]) > 1
 
+################################
+### RESTRIÇÕES - AGENDAMENTO ###
+################################
+
+class MaxAulasProf(Restricao):
+    def __init__(self, professor, max_aulas):
+        super().__init__([professor, max_aulas])
+        self.professor = professor
+        self.max_aulas = max_aulas
+
+    def esta_satisfeita(self, atribuicao):
+        if self.professor not in atribuicao:
+            return True
+        return atribuicao[self.professor] <= self.max_aulas
+
+
+class EqAulasMateria(Restricao):
+    def __init__(self, materia, qtd_aulas):
+        super().__init__([materia, qtd_aulas])
+        self.materia = materia
+        self.qtd_aulas = qtd_aulas
+
+    def esta_satisfeita(self, atribuicao):
+        if self.materia not in atribuicao:
+            return True
+        return atribuicao[self.materia] == self.qtd_aulas

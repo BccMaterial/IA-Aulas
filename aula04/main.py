@@ -1,6 +1,6 @@
-from classes import Zoo
+from classes import Agendamento
 
 if __name__ == "__main__":
-    problema = Zoo()
+    problema = Agendamento()
     problema.rodar()
     problema.imprime_resposta()
